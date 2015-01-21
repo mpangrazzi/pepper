@@ -1,0 +1,12 @@
+node_modules/
+coverage/
+
+examples/public/
+
+dist/
+
+*.log
+
+.bundle*
+.DS_Store
+.idea
