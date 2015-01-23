@@ -5,22 +5,20 @@
   "main": "index.js",
   "scripts": {
     "build": "mkdir -p ./dist && ./node_modules/.bin/browserify ./index.js -s Pepper -o ./dist/pepper.js",
-    "examples": "npm run build && cp ./dist/pepper.js ./examples/public && node ./examples",
     "build-min": "mkdir -p ./dist && ./node_modules/.bin/browserify ./index.js -s Pepper | ./node_modules/.bin/uglifyjs -mc > ./dist/pepper.min.js",
+    "examples": "npm run build && cp ./dist/pepper.js ./examples/public && node ./examples",
     "test": "npm run build && cp ./dist/pepper.js ./test/pepper.js && node ./test/chilli & node ./test"
   },
   "author": "Michele Pangrazzi <xmikex83@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "debug": "^2.1.1",
-    "eventemitter3": "^0.1.6",
     "jsonp": "^0.1.0"
   },
   "devDependencies": {
     "browserify": "^8.1.1",
     "express": "^4.11.0",
     "mocha": "^2.1.0",
-    "should": "^4.6.1",
     "uglify-js": "^2.4.16"
   },
   "jshintConfig": {
