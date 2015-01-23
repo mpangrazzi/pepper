@@ -95,4 +95,25 @@ describe('Pepper', function() {
     });
   });
 
+
+  it('Should do a successful "logoff" action update clientState', function(done) {
+    var pepper = Pepper({
+      host: 'localhost',
+      port: 5000,
+      ssl: false
+    });
+
+    pepper.logon('test', 'test', function(err, data) {
+
+      pepper.logoff(function(err, data) {
+        expect(data).to.have.property('clientState');
+        expect(data.clientState).to.equal(0);
+        expect(pepper.status.clientState).to.equal(0);
+
+        done();
+      });
+
+    });
+  });
+
 });

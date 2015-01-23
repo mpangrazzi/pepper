@@ -327,7 +327,12 @@ Pepper.prototype.logon = function(username, password, callback) {
  */
 
 Pepper.prototype.logoff = function(callback) {
-  this._api(this._baseUrl + 'logoff', callback);
+  var self = this;
+
+  this._api(this._baseUrl + 'logoff', function(err, data) {
+    if (data) self.status = data;
+    callback(err, data);
+  });
 };
 
 
@@ -341,10 +346,7 @@ Pepper.prototype.refresh = function(callback) {
   var self = this;
 
   this._api(this._baseUrl + 'status', function(err, data) {
-    if (data) {
-      self.status = data;
-      debug('status updated - clientState: %s', self.status.clientState);
-    }
+    if (data) self.status = data;
     callback(err, data);
   });
 };
@@ -386,7 +388,7 @@ Pepper.prototype._callLogon = function(payload, callback) {
   var self = this;
 
   this._api(this._baseUrl + 'logon', payload, function(err, data) {
-    self.status = data;
+    if (data) self.status = data;
     callback(err, data);
 
     if (data.clientState === Pepper.stateCodes.AUTH) {
