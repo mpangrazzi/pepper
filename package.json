@@ -1,8 +1,12 @@
 {
   "name": "chilli-pepper",
   "version": "1.0.0",
-  "description": "TODO",
+  "description": "Tiny JS client library for CoovaChilli JSON Interface",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mpangrazzi/pepper.git"
+  },
   "scripts": {
     "build": "mkdir -p ./dist && ./node_modules/.bin/browserify ./index.js -s Pepper -o ./dist/pepper.js",
     "build-min": "mkdir -p ./dist && ./node_modules/.bin/browserify ./index.js -s Pepper | ./node_modules/.bin/uglifyjs -mc > ./dist/pepper.min.js",
