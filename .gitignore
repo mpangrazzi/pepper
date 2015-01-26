@@ -2,6 +2,7 @@ node_modules/
 coverage/
 
 examples/public/
+test/bundle.js
 
 dist/
 

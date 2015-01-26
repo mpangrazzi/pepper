@@ -1,9 +1,25 @@
 
+var expect = require('chai').expect;
+var Pepper = require('..');
+
 /**
- * Chai expect BDD
+ * Redefining _api method to avoid real jsonp calls
+ * and emulating CoovaChilli JSON interface responses
  */
 
-var expect = chai.expect;
+var responses = {
+  logon: require('./fixtures/logon'),
+  logoff: require('./fixtures/logoff'),
+  status: require('./fixtures/status')
+};
+
+Pepper.prototype._api = function(uri, qs, callback) {
+  if (typeof qs === 'function') callback = qs;
+
+  if (uri.indexOf('logon') !== -1) callback(null, responses.logon);
+  if (uri.indexOf('logoff') !== -1) callback(null, responses.logoff);
+  if (uri.indexOf('status') !== -1) callback(null, responses.status);
+};
 
 //
 
@@ -13,9 +29,7 @@ var sampleQs = '?loginurl=http%3a%2f%2flogin.freeluna.it%2f%3fres%3dnotyet%26uam
 
 describe('Pepper', function() {
 
-  it('Should throw if no CoovaChilli querystring is present, \
-    and host / port are not specified', function() {
-
+  it('Should throw if no CoovaChilli querystring is present, and host / port are not specified', function() {
     function getPepper() { return Pepper(); }
     expect(getPepper).to.throw('Cannot determine CoovaChilli JSON API base url');
   });

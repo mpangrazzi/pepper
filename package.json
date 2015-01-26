@@ -11,7 +11,8 @@
     "build": "mkdir -p ./dist && ./node_modules/.bin/browserify ./index.js -s Pepper -o ./dist/pepper.js",
     "build-min": "mkdir -p ./dist && ./node_modules/.bin/browserify ./index.js -s Pepper | ./node_modules/.bin/uglifyjs -mc > ./dist/pepper.min.js",
     "examples": "npm run build && cp ./dist/pepper.js ./examples/public && node ./examples",
-    "test": "npm run build && cp ./dist/pepper.js ./test/pepper.js && node ./test/chilli & node ./test"
+    "build-test": "./node_modules/.bin/browserify ./test/tests.js > ./test/bundle.js",
+    "test": "npm run build && cp ./dist/pepper.js ./test/pepper.js && npm run build-test && node ./test"
   },
   "author": "Michele Pangrazzi <xmikex83@gmail.com>",
   "license": "MIT",
@@ -22,6 +23,7 @@
   "devDependencies": {
     "browserify": "^8.1.1",
     "express": "^4.11.0",
+    "jsdom": "^3.0.2",
     "mocha": "^2.1.0",
     "uglify-js": "^2.4.16"
   },
@@ -29,5 +31,14 @@
     "loopfunc": true,
     "multistr": true,
     "expr": true
+  },
+  "testling": {
+    "harness": "mocha-bdd",
+    "files": "test/tests.js",
+    "browsers": [
+      "ie/8..latest",
+      "chrome/latest",
+      "firefox/latest"
+    ]
   }
 }

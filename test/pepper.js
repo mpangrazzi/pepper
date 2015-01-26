@@ -210,7 +210,7 @@ function Pepper(options) {
   if (this.uamservice && this.uamservice.protocol !== 'https:') {
     var message = 'warning: uamservice uri is insecure - Password will be sent in cleartext';
 
-    if (window.console) {
+    if (!window.console) {
       console.log(message);
     } else {
       alert(message);
