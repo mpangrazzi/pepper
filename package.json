@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "browserify": "^8.1.1",
+    "chai": "^1.10.0",
     "express": "^4.11.0",
     "jsdom": "^3.0.2",
     "mocha": "^2.1.0",
@@ -32,19 +33,5 @@
     "loopfunc": true,
     "multistr": true,
     "expr": true
-  },
-  "testling": {
-    "harness": "mocha-bdd",
-    "files": "test/tests.js",
-    "browsers": [
-      "ie/6..latest",
-      "chrome/22..latest",
-      "firefox/16..latest",
-      "safari/latest",
-      "opera/11.0..latest",
-      "iphone/6",
-      "ipad/6",
-      "android-browser/latest"
-    ]
   }
 }
