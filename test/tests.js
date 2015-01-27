@@ -2,6 +2,9 @@
 var expect = require('chai').expect;
 var Pepper = require('..');
 
+var isNode = typeof window !== 'object';
+if (isNode) require('./support/jsdom');
+
 /**
  * Redefining _api method to avoid real jsonp calls
  * and emulating CoovaChilli JSON interface responses

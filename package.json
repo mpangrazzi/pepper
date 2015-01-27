@@ -12,7 +12,8 @@
     "build-min": "mkdir -p ./dist && ./node_modules/.bin/browserify ./index.js -s Pepper | ./node_modules/.bin/uglifyjs -mc > ./dist/pepper.min.js",
     "examples": "npm run build && cp ./dist/pepper.js ./examples/public && node ./examples",
     "build-test": "./node_modules/.bin/browserify ./test/tests.js > ./test/bundle.js",
-    "test": "npm run build && cp ./dist/pepper.js ./test/pepper.js && npm run build-test && node ./test"
+    "test": "NODE_ENV=test ./node_modules/.bin/mocha test/tests.js",
+    "test-serve": "npm run build && cp ./dist/pepper.js ./test/pepper.js && npm run build-test && node ./test"
   },
   "author": "Michele Pangrazzi <xmikex83@gmail.com>",
   "license": "MIT",
