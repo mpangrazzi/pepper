@@ -1,6 +1,8 @@
 (chilli) Pepper
 ==============
 
+[![Build Status](https://travis-ci.org/mpangrazzi/pepper.svg?branch=master)](https://travis-ci.org/mpangrazzi/pepper)
+
 Tiny JS client library for [CoovaChilli JSON Interface](http://coova.org/CoovaChilli/JSON). 
 
 It works well with [Browserify](http://browserify.org), but you can use it also with [AMD](http://requirejs.org/docs/whyamd.html#amd) or even globally, without a module loader.
