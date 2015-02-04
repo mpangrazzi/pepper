@@ -245,16 +245,16 @@ Pepper.stateCodes = {
 
 Pepper.prototype.logon = function(username, password, callback) {
 
-  if (typeof username !== 'string') {
+  if (typeof username !== 'string' || username.length === 0) {
     return callback(new TypeError('username must be a string'));
   }
 
-  if (typeof password !== 'string') {
+  if (typeof password !== 'string' || password.length === 0) {
     return callback(new TypeError('password must be a string'));
   }
 
   if (this.status.clientState === Pepper.stateCodes.AUTH) {
-    return callback(new Error('Current clientState is already %s', Pepper.stateCodes.AUTH));
+    return callback(new Error('Current clientState is already ' + Pepper.stateCodes.AUTH));
   }
 
   debug('starting logon for %s - %s', username, password);
@@ -277,18 +277,20 @@ Pepper.prototype.logon = function(username, password, callback) {
 
     self.status = data;
 
-    if (this.uamservice) {
+    if (self.uamservice) {
 
       // 2-A. Handle uamservice
 
-      debug('calling uamservice uri: %s', this.uamservice);
+      debug('calling uamservice uri: %s', self.uamservice.href);
 
-      this._callUamservice(username, password, data.challenge, function(err, response) {
+      self._callUamservice(username, password, data.challenge, function(err, response) {
         if (err) return callback(err);
 
         if (!response || !response.chap) {
           return callback(new Error('uamservice response is invalid (missing "chap" field)'));
         }
+
+        debug('obtained uamservice response', response);
 
         // 3-A. Call logon API
 
@@ -298,12 +300,14 @@ Pepper.prototype.logon = function(username, password, callback) {
         }, callback);
 
       });
+
     } else {
 
       // 2-B. Calculate CHAP with obtained challenge
       //    NOTE: password will be converted to hex inside utils.chap()
 
       self.chap = utils.chap(self.ident, password, self.status.challenge);
+
       debug('computed CHAP-Password: %s', self.chap);
 
       // 3-B. call logon API
@@ -363,7 +367,7 @@ Pepper.prototype.startAutoRefresh = function() {
   clearInterval(this._refreshInterval);
   this._refreshInterval = setInterval(this.refresh, this.interval);
 
-  debug('Auto-refreshing status every %s seconds', this.interval);
+  debug('Auto-refreshing status every %s ms', this.interval);
 };
 
 
@@ -389,11 +393,12 @@ Pepper.prototype._callLogon = function(payload, callback) {
 
   this._api(this._baseUrl + 'logon', payload, function(err, data) {
     if (data) self.status = data;
-    callback(err, data);
 
     if (data.clientState === Pepper.stateCodes.AUTH) {
       self.startAutoRefresh();
     }
+
+    callback(err, data);
   });
 };
 
