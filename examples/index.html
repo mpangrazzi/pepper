@@ -6,6 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link href="http://fonts.googleapis.com/css?family=Lato:100,300,400" rel="stylesheet" type="text/css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+
     <title>Pepper</title>
 
     <style type="text/css">
@@ -14,14 +17,23 @@
         background: #f9f9f9;
         color: #666;
       }
+
+      #welcome {
+        margin-top: 60px;
+      }
+
     </style>
   </head>
 
   <body>
 
-    <button type="button" id="logon"></button>
-    <button type="button" id="logoff"></button>
-    <button type="button" id="refresh"></button>
+    <div class="container">
+
+      <div id="welcome">
+        <p class="lead text-center">Open your web inspector and play with <strong>pepper</strong> object :)</p>
+      </div>
+
+    </div>
 
     <script src="/pepper.js"></script>
 
