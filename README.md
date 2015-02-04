@@ -96,7 +96,7 @@ Note that Pepper will **throw an exception** if fails to build base CoovaChilli 
 
 #### .refresh(callback)
 
-Update internal status calling CoovaChilli `status` API.
+Update internal status calling CoovaChilli `status` API. Callback is **optional**.
 
 Callback arguments are:
 
@@ -118,7 +118,7 @@ Callback arguments are:
 
 #### .logoff(callback)
 
-Performs a logoff.
+Performs a logoff. Callback is **optional**.
 
 Callback arguments are:
 
