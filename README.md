@@ -148,6 +148,19 @@ User's status object. This will be updated:
 - Every `interval` ms (if specified)
 
 
+## Test
+
+Run tests in Node.js (using [jsdom](https://github.com/tmpvar/jsdom)):
+
+```npm test```
+
+Run tests in browser:
+
+```npm run test-server```
+
+Then go to `http://localhost:4000`
+
+
 ## TODO
 
 - write more tests
