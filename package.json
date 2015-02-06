@@ -19,7 +19,8 @@
   "license": "MIT",
   "dependencies": {
     "debug": "^2.1.1",
-    "jsonp": "^0.1.0"
+    "jsonp": "^0.1.0",
+    "superagent": "^0.21.0"
   },
   "devDependencies": {
     "browserify": "^8.1.1",
