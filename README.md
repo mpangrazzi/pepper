@@ -9,6 +9,7 @@ Basically it's a rewrite of [ChilliLibrary.js](http://dev.coova.org/svn/coova-ch
 
 - code is more modular
 - works with [Browserify](http://browserify.org), [AMD](http://requirejs.org/docs/whyamd.html#amd) or simply including the minified script and use it globally.
+- can be used both in browser or in [Node.js](http://nodejs.org)
 - functional tests
 - examples
 
@@ -163,9 +164,9 @@ Then go to `http://localhost:4000`
 
 ## TODO
 
+- make separate builds for browser and node, since **32k** for a browser lib is a bit much
 - write more tests
-- add coverage info
-- make Pepper works with [Node.js](http://nodejs.org) / [io.js](https://iojs.org). This would be nice in order to enable users to create a CoovaChilli Smart Client using, for example, [nw.js](http://nwjs.io) (formerly node-webkit).
+- add test coverage info
 
 
 ## License
