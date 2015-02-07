@@ -149,6 +149,19 @@ User's status object. This will be updated:
 - Every `interval` ms (if specified)
 
 
+## Debug
+
+This library is builded with [debug](https://github.com/visionmedia/debug) module. 
+
+If you want to see debug messages in browser:
+
+```localStorage.debug = '*' // in a JS console```
+
+If you want to see debug messages in Node.js:
+
+```DEBUG=* {yourScript}.js```
+
+
 ## Test
 
 Run tests in Node.js (using [jsdom](https://github.com/tmpvar/jsdom)):
