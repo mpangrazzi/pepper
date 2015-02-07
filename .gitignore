@@ -3,6 +3,7 @@ coverage/
 
 examples/public/
 test/bundle.js
+test/pepper.js
 
 dist/
 
