@@ -177,7 +177,6 @@ Then go to `http://localhost:4000`
 
 ## TODO
 
-- make separate builds for browser and node, since **32k** for a browser lib is a bit much
 - write more tests
 - add test coverage info
 
