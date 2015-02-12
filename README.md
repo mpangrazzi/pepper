@@ -15,7 +15,7 @@ Basically it's a rewrite of [ChilliLibrary.js](http://dev.coova.org/svn/coova-ch
 
 ## Examples
 
-### Browserify
+### Browserify / Node.js / io.js
 
 `npm install chilli-pepper`, then:
 
