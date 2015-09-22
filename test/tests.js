@@ -96,7 +96,7 @@ describe('Pepper', function() {
   });
 
 
-  it('Should do a successful "logon" action update clientState', function(done) {
+  it('Should do a successful "logon" action', function(done) {
     var pepper = Pepper({
       host: 'localhost',
       port: 5000,
@@ -107,6 +107,36 @@ describe('Pepper', function() {
       expect(data).to.have.property('clientState');
       expect(data.clientState).to.equal(1);
       expect(pepper.status.clientState).to.equal(1);
+      done();
+    });
+  });
+
+
+  it('Should do a successful "logon" action using PAP authentication', function(done) {
+    var pepper = Pepper({
+      host: 'localhost',
+      port: 5000,
+      ssl: false
+    });
+
+    pepper.logon('test', 'test', { protocol: 'PAP' }, function(err, data) {
+      expect(data).to.have.property('clientState');
+      expect(data.clientState).to.equal(1);
+      expect(pepper.status.clientState).to.equal(1);
+      done();
+    });
+  });
+
+
+  it('Should throw an error if authentication protocol is not valid', function(done) {
+    var pepper = Pepper({
+      host: 'localhost',
+      port: 5000,
+      ssl: false
+    });
+
+    pepper.logon('test', 'test', { protocol: 'INVALID' }, function(err, data) {
+      expect(err.message).to.equal('Invalid or unsupported authentication protocol');
       done();
     });
   });

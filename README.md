@@ -34,7 +34,7 @@ pepper.logon('john', 'd0E', function(err, data) {
   }
 
   // ...
-  
+
 });
 ```
 
@@ -63,13 +63,13 @@ pepper.logon('john', 'd0E', function(err, data) {
   }
 
   // ...
-  
+
 });
 ```
 
 ## var pepper = Pepper(options)
 
-Get a new Pepper instance. Available options are listed below. 
+Get a new Pepper instance. Available options are listed below.
 
 Note that all options are **optional**: by default Pepper will try to extract required data from CoovaChilli redirect querystring.
 
@@ -83,7 +83,7 @@ Note that all options are **optional**: by default Pepper will try to extract re
 
 - `interval`: _Number_. If specified, Pepper will update status informations (clientState, ...) every {interval} ms.
 
-- `uamservice`: _String_. If specified, Pepper will do a JSONP call to this service in order to obtain a CHAP-Password (instead of calculating on the client side). See documentation below for more informations. 
+- `uamservice`: _String_. If specified, Pepper will do a JSONP call to this service in order to obtain a CHAP-Password (instead of calculating on the client side). See documentation below for more informations.
 
 - `querystring` _String_: Optional parameter if you want to manually pass CoovaChilli redirect querystring.
 
@@ -104,13 +104,18 @@ Callback arguments are:
 - `err`: Any error encountered during procedure
 - `data`: CoovaChilli status response.
 
-#### .logon(username, password, callback)
+#### .logon(username, password[, options], callback)
 
-- `username`: user's username
-- `password`: user's password
-- `callback`: callback function. 
+- `username`: _String_ user's username
+- `password`: _String_ user's password
+- `options`: _Object_ optional logon options (see below)
+- `callback`: _Function_ callback function.
 
 Performs a logon (checking current status first).
+
+Available `options` are:
+
+- `protocol`: _String_ authentication protocol. Currently, `PAP` and `CHAP` are supported, and the default is `CHAP`.
 
 Callback arguments are:
 
@@ -130,7 +135,7 @@ Callback arguments are:
 
 - `interval`: _Number_. Interval length in milliseconds.
 
-Starts automatic status refresh every `interval` ms. 
+Starts automatic status refresh every `interval` ms.
 
 Note that this function is called automatically if you specify `interval` option when creating Pepper instance, but you can also call it manually whenever you want.
 
@@ -151,7 +156,7 @@ User's status object. This will be updated:
 
 ## Debug
 
-This library is builded with [debug](https://github.com/visionmedia/debug) module. 
+This library is builded with [debug](https://github.com/visionmedia/debug) module.
 
 If you want to see debug messages in browser:
 

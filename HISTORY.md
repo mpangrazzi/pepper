@@ -1,3 +1,8 @@
+1.2.0 / 2015-09-16
+==================
+
+* Added [PAP](https://it.wikipedia.org/wiki/Password_authentication_protocol) authentication support
+
 1.1.1 / 2015-02-09
 ==================
 
